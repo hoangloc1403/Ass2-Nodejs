@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <title>
+        <%= title %>
+    </title>
+
+
+</head>
+
+<body>
+    <div id="header">
+        <ul id="nav">
+            <li><a href="">Home</a></li>
+            <li><a href="/">Player</a></li>
+            <li><a href="/nations">Nation</a></li>
+            <li><a href="">Contact</a></li>
+          
+        </ul>
+        <div class="search-btn">
+            <i class="search-icon ti-search"></i>
+        </div>
+    
+
+    
+    <form method="post" class="container">
+        <div class="field">
+            <label class="label">Name</label>
+            <div class="control" style="width:50%">
+                <input class="input" required name="name" type="text" value="<%=player.name%>">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Image</label>
+            <div class="control" style="width:50%">
+                <input class="input" required name="image" type="text" value=" <%=player.image %>">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Club</label>
+            <div class="control" style="width:20%">
+                <div class="select">
+                    <select name="club">
+                                         <% clubs.forEach(club => { %>
+<option value="<%= club.name %>" <%= JSON.stringify(club.name) === JSON.stringify(player.club) ? 'selected' : '' %>><%= club.name %></option>                                                    <% }) %>
+                                        </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Position</label>
+            <div class="control">
+                <div class="select">
+                    <select name="position">
+                                <% positions.forEach(position => { %>
+    <option value="<%= position.name %>" <%= JSON.stringify(position.name) === JSON.stringify(player.position) ? 'selected' : '' %>><%=position.name %></option>                                                    <% }) %>
+                            </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="field" style="width:30%">
+            <label class="label">Goals</label>
+            <div class="control">
+                <input class="input" required name="goals" type="number" value="<%= player.goals%>">
+            </div>
+        </div>
+
+        <div class="field">
+
+            <label class="label">IsCaptain</label>
+
+            <div class="control">
+                <% if ( player.isCaptain ===true) { %>
+                    <label class="radio">       
+                                <input
+                                    type="radio"
+                                    name="isCaptain"
+                                    id="true"
+                                    value="true"
+                                    checked> True
+                            </label>
+                    <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="isCaptain"
+                                    id="false"
+                                    value="false"                                 
+                                    > False
+                            </label>
+                    <% } else { %>
+                        <label class="radio">       
+                                <input
+                                    type="radio"
+                                    name="isCaptain"
+                                    id="true"
+                                    value="true"
+                                    checked=""> True
+                            </label>
+                        <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="isCaptain"
+                                    id="false"
+                                    value="false"
+                                    checked
+                                    
+                                    > False
+                            </label>
+                        <% } %>
+
+            </div>
+        </div>
+
+        <div class=" field is-grouped ">
+            <div class="control ">
+                <button class="button"  style="
+                background-color: #dc3545;
+                color: white;
+                transition: all ease 0.4s;
+              
+              ">Update</button>
+            </div>
+            <div class="control "
+        >
+                <a href="/"><button class="button" style="
+                    background-color: white;
+                    color: #dc3545;
+                    border: 1px solid #dc3545;
+                    transition: all ease 0.4s;"
+                                type="submit ">Cancel</button></a>
+            </div>
+        </div>
+    </form>
+    
+    <footer class="footer" style=" background-color: #000">
+    </footer>
+</div>
+</body>
+
+</html>

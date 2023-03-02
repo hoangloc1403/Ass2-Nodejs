@@ -1,0 +1,250 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <title>
+        <%= title %>
+    </title>
+   
+     
+</head>
+
+
+<body>
+
+    <div id="header">
+        <ul id="nav">
+            <li><a href="#slider">Home</a></li>
+            <li><a href="/">Player</a></li>
+            <li><a href="#container">Nation</a></li>
+            <li><a href="#content-contact">Contact</a></li>
+          
+        </ul>
+        <div class="search-btn">
+            <i class="search-icon ti-search"></i>
+        </div>
+    </div>
+
+  
+
+    <div id="slider">
+
+    </div>
+    <div id="container">
+        <div class="content-section1">
+            <div class="section-header">THE NATION</div>
+        <div class="columns is-multiline ">
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Name</th>
+                    <th style="text-align: center;">Description</th>
+                    <th style="text-align: center;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% nations.forEach(function(nation){ %>
+                    <tr>
+                        <td style="text-align: center;">
+                            <%= nation.name %>
+                        </td>
+                        <td style="text-align: center;">
+                            <%= nation.description %>
+                        </td>
+                        <td>
+                            <div class="buttons" style="justify-content: space-between; margin: 0px 15px 0px 15px;">
+                                <a href="/nations/<%=nation.id
+                                                        %>" style="text-decoration: none;">
+                                    <button class="button" style="
+                                    background-color: #FFD700;
+                                    color: white;
+                                    transition: all ease 0.4s;
+                                  ">Edit</button>
+                                </a>
+                                <a href="nations/delete/<%=nation.id
+                                                        %>" style="text-decoration: none;">
+                                    <button class="button" style="
+                                    background-color: white;
+                                    color: #FFD700;
+                                    border: 1px solid #FFD700;
+                                    transition: all ease 0.4s;
+                                  " type="submit" onclick="return confirm('Are you sure you want to delete?')">Delete
+                                                        </button>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <% })%>
+            </tbody>
+        </table>
+
+
+        <div id="modal-js-example" class="modal">
+            <div class="modal-background"></div>
+
+            <div class="modal-content container-md">
+                <div class="box">
+                    <div class="column">
+                        <h1 style="text-align: center;margin: 5px 0px 25px 0px; font-weight: bold; color: #FF8C00;">Create Nation</h1>
+                        <form method="post">
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">Name</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <div class="control">
+                                            <input class="input is-info" name="name" type="text" placeholder="Name" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field is-horizontal">
+                                <div class="field-label
+                                                is-normal">
+                                    <label class="label">Description</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <div class="control">
+                                            <input class="input is-info" name="description" type="text" placeholder="Description" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="field is-horizontal">
+                                <div class="field-label
+                                                is-normal">
+                                    <label class="label"></label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <div class="control
+                                                        ">
+                                            <button class="button
+                                                            " style="  background-color: #FF8C00;
+                                                            color: #fff;
+                                                            border: 1px solid #FF8C00;
+                                                            transition: all ease 0.4s;" type="submit">
+                                                            Create
+                                                        </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+        <button class="js-modal-trigger button_add" data-target="modal-js-example" >Create</button>
+      
+
+
+    </div>
+    <div id="content-contact">
+        <div class="content-secion">
+            <h2 class="section-heading">CONTACT</h2>
+            <p class="section-sub-heading">Fan? Drop a note!</p>
+            <div class="roww">
+                <div class="coll col-half">
+                    <p><i class="ti-location-pin"></i>FPT University, VN</p>
+                    <p><i class="ti-mobile"></i>Phone: +83 83 571 5702</p>
+                    <p><i class="ti-email"></i>Email: locnhse150060@fpt.edu.vn</p>
+                </div>
+                <div class="coll2 col-half">
+                    <form action="">
+                        <div class="roww">
+                            <div class="coll2 col-half2">
+                                <input type="text" name="" placeholder="Name" required id="" class="form-control" >
+                            </div>
+                            <div class="coll2 col-half2">
+                                <input type="text" name="" placeholder="Email" required id="" class="form-control" >
+                            </div>
+                        </div>
+                        <div class="roww">
+                            <div class="coll2 col-full">
+                                <input type="text" name="" placeholder="Messenger" required id="" class="form-control" >
+                            </div>
+                        </div>
+                        <input class="form-submit-btn" type="submit" value="SEND">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="map-section">
+            <img src="/images/map.jpg" alt="">
+        </div> 
+        </div>
+        <div id="footer">
+            <div class="socials">
+                <a href=""><i class="ti-facebook"></i></a>
+                <a href=""><i class="ti-instagram"></i></a>
+                <a href=""><i class="ti-youtube"></i></a>
+                <a href=""><i class="ti-pinterest"></i></a>
+                <a href=""><i class="ti-twitter"></i></a>
+                <a href=""><i class="ti-linkedin"></i></a>
+            </div>
+            <p class="copyright">Powered by <a href="">Word Cup</a></p>
+        </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Functions to open and close a modal
+            function openModal($el) {
+                $el.classList.add('is-active');
+            }
+
+            function closeModal($el) {
+                $el.classList.remove('is-active');
+            }
+
+            function closeAllModals() {
+                (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+                    closeModal($modal);
+                });
+            }
+
+            // Add a click event on buttons to open a specific modal
+            (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+                const modal = $trigger.dataset.target;
+                const $target = document.getElementById(modal);
+
+                $trigger.addEventListener('click', () => {
+                    openModal($target);
+                });
+            });
+
+            // Add a click event on various child elements to close the parent modal
+            (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+                const $target = $close.closest('.modal');
+
+                $close.addEventListener('click', () => {
+                    closeModal($target);
+                });
+            });
+
+            // Add a keyboard event to close all modals
+            document.addEventListener('keydown', (event) => {
+                const e = event || window.event;
+
+                if (e.keyCode === 27) { // Escape key
+                    closeAllModals();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
+
